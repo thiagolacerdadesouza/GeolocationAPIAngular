@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+    <html ng-app="scotchApp">
+    <head>
+      <!-- SCROLLS -->
+      <!-- load bootstrap and fontawesome via CDN -->
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+      <!-- SPELLS -->
+      <!-- load angular and angular route via CDN -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+          <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+      <script src="script.js"></script>
+    </head>
+    <body ng-app="geo">
+    <div class="container main" ng-controller="mainController">
+        <form>
+            <div class="row">
+                <div id="map_canvas" ui-map="model.myMap" class="map" ui-options="mapOptions">
+                </div>
+                <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]">
+                </div>
+            </div>
+            <div class="row" ng-show="showResult()">
+               Latitude: {{lat}} <br />
+               Longitude: {{lng}} <br />
+               Accuracy: {{accuracy}}
+            </div>
+            <div class="row" ng-show="!showResult()">
+                Error : {{error}}
+                Error Code: {{error.code}}
+            </div>       
+        </form>
+    </div>
+	</body>
+    </html>
+	<!--http://victorshi.com/blog/post/Use-Geolocation-API-with-Angularjs
